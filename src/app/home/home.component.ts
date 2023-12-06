@@ -4,17 +4,34 @@ import { CommonModule } from '@angular/common';
 import { Case } from '../case';
 import { Location } from '../location';
 
+enum GameState {
+  NotStarted,
+  InProgress,
+  Solved
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    CaseViewComponent
+    CaseViewComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  GameState = GameState;
+
+  gameState: GameState = GameState.NotStarted;
+  currentCase!: Case;
+
+  startGame() {
+    this.gameState = GameState.InProgress;
+    this.currentCase = this.case;
+  }
+
   case: Case = {
     id: '1',
     name: 'The Mystery of the Missing Pudding',

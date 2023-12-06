@@ -1,9 +1,12 @@
-<section>
+<section *ngIf="gameState === GameState.NotStarted">
     <div class="column image-column">
         <img class="logo" src="/assets/logo.jpg" alt="Mystery Image" />
     </div>
     <div class="column button-column">
-        <button class="button">Start Game</button>
+        <button (click)="startGame()" class="button">Start Game</button>
     </div>
     <!-- <app-case-view [case]="case"></app-case-view> -->
+</section>
+<section *ngIf="gameState === GameState.InProgress">
+    <app-case-view [case]="currentCase"></app-case-view>
 </section>
