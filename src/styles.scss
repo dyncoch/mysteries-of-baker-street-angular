@@ -123,27 +123,7 @@ body {
     text-align: center;
 }
 
-.locations {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    /* Adjust the gap between buttons */
-    justify-content: center;
-}
 
-.location-button {
-    padding: 8px 16px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
-
-    &:hover {
-        background-color: #e0e0e0;
-        border-color: #b0b0b0;
-    }
-}
 
 // Responsive adjustments if needed
 @media (max-width: 768px) {

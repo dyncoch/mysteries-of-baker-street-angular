@@ -1,9 +1,12 @@
-<div class="page">
-    <h1>{{ case.name }}</h1>
-    <p>{{ case.description }}</p>
-    <ul class="objectives">
-        <li *ngFor="let objective of case?.objectives">
-            {{ objective }}
-        </li>
-    </ul>
-</div>
+<section>
+    <div class="page">
+        <h1>{{ case.name }}</h1>
+        <p>{{ case.description }}</p>
+        <ul class="objectives">
+            <li *ngFor="let objective of case?.objectives">
+                {{ objective }}
+            </li>
+        </ul>
+    </div>
+</section>
+<app-locations-buttons [locations]="locationValues"></app-locations-buttons>
