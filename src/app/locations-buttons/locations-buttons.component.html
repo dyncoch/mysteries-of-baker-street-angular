@@ -1,5 +1,5 @@
 <div class="locations">
     <div *ngFor="let location of locations">
-        <button class="location-button">{{ location }}</button>
+        <button (click)="onLocationClick(location)" class="location-button">{{ location }}</button>
     </div>
 </div>

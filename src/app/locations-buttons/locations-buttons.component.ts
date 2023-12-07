@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-locations-buttons',
@@ -12,4 +12,11 @@ import { Component, Input } from '@angular/core';
 })
 export class LocationsButtonsComponent {
   @Input() locations!: string[];
+
+  @Output() locationSelected = new EventEmitter<string>();
+
+  onLocationClick(location: string) {
+    this.locationSelected.emit(location);
+  }
+
 }

@@ -9,4 +9,4 @@
         </ul>
     </div>
 </section>
-<app-locations-buttons [locations]="locationValues"></app-locations-buttons>
+<app-locations-buttons [locations]="locationValues" (locationSelected)="onLocationSelect($event)"></app-locations-buttons>
