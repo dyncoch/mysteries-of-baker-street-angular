@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Custom SCSS/SASS Files */
+ @import 'variables';
+ @import 'mixins';
+ @import 'custom';
+ /* UIKit */
+ @import "variables-theme.scss";
+ @import "mixins-theme.scss";
+ @import "uikit-theme.scss";
+
 // Color palette font Victorian mystery theme
 $background-color-start: #013220; // Dark green, reminiscent of Victorian times
 $background-color-end: #000000; // Black for the fade effect

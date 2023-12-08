@@ -3,10 +3,14 @@ import { CaseViewComponent } from '../case-view/case-view.component';
 import { CommonModule } from '@angular/common';
 import { Case } from '../case';
 import { Location } from '../location';
+import { LocationsButtonsComponent } from '../locations-buttons/locations-buttons.component';
+import { getLocationEnumValue } from '../location';
+import { HintViewComponent } from '../hint-view/hint-view.component';
 
 enum GameState {
   NotStarted,
-  InProgress,
+  ShowCase,
+  ShowHints,
   Solved
 }
 
@@ -16,6 +20,8 @@ enum GameState {
   imports: [
     CommonModule,
     CaseViewComponent,
+    LocationsButtonsComponent,
+    HintViewComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -30,8 +36,26 @@ export class HomeComponent {
   visitedLocations: Location[] = [];
 
   startGame() {
-    this.gameState = GameState.InProgress;
+    this.gameState = GameState.ShowCase;
     this.currentCase = this.case;
+  }
+
+  locationValues = Object.values(Location).filter(location => typeof location === 'string') as string[];
+
+  onLocationSelect(locationString: string) {
+    console.log('location clicked: ' + locationString);
+    let location = getLocationEnumValue(locationString);
+
+    this.selectedLocation = location;
+    this.visitedLocations.push(location!);
+    this.gameState = GameState.ShowHints;
+
+    // this.locationSelected.emit(location!);
+
+  }
+
+  onBack() {
+    this.gameState = GameState.ShowCase;
   }
 
   case: Case = {

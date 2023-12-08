@@ -7,6 +7,12 @@
     </div>
     <!-- <app-case-view [case]="case"></app-case-view> -->
 </section>
-<section *ngIf="gameState === GameState.InProgress">
-    <app-case-view [case]="currentCase"></app-case-view>
+<section *ngIf="gameState === GameState.ShowCase">
+     <app-case-view [case]="currentCase"></app-case-view>
+</section>
+<section *ngIf="gameState === GameState.ShowHints && selectedLocation !== undefined">
+     <app-hint-view [case]="currentCase" [selectedLocation]="selectedLocation" (onBack)="onBack()" ></app-hint-view>
+</section>
+<section *ngIf="gameState === GameState.ShowCase || gameState == GameState.ShowHints">
+     <app-locations-buttons [locations]="locationValues" (locationSelected)="onLocationSelect($event)"></app-locations-buttons>
 </section>
