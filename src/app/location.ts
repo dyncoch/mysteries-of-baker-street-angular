@@ -14,3 +14,7 @@ export enum Location {
     ScotlandYard,
     Tobacconist,
 }
+
+export function getLocationEnumValue(locationName: string): Location | undefined {
+    return Location[locationName as keyof typeof Location];
+}

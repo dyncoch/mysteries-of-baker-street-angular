@@ -27,6 +27,7 @@ export class HomeComponent {
   gameState: GameState = GameState.NotStarted;
   currentCase!: Case;
   selectedLocation?: Location;
+  visitedLocations: Location[] = [];
 
   startGame() {
     this.gameState = GameState.InProgress;
