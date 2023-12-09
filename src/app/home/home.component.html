@@ -1,12 +1,14 @@
-<section *ngIf="gameState === GameState.NotStarted">
-    <div class="column image-column">
-        <img class="logo" src="/assets/logo.jpg" alt="Mystery Image" />
-    </div>
-    <div class="column button-column">
-        <button (click)="startGame()" class="button">Start Game</button>
-    </div>
-    <!-- <app-case-view [case]="case"></app-case-view> -->
-</section>
+<!-- <section *ngIf="gameState === GameState.NotStarted" class="uk-container" > -->
+<!--     <div> -->
+<!--         <img class="logo" src="/assets/mysteries-of-baker-street-logo.jpeg" alt="Mysteries Of Baker Street - Game" /> -->
+<!--     </div> -->
+<!--     <div> -->
+<!--         <button (click)="startGame()" class="uk-button uk-button-default uk-button-large">Start Game</button> -->
+<!--     </div> -->
+<!-- </section> -->
+
+
+
 <section *ngIf="gameState === GameState.ShowCase">
      <app-case-view [case]="currentCase"></app-case-view>
 </section>
@@ -15,4 +17,17 @@
 </section>
 <section *ngIf="gameState === GameState.ShowCase || gameState == GameState.ShowHints">
      <app-locations-buttons [locations]="locationValues" (locationSelected)="onLocationSelect($event)"></app-locations-buttons>
+</section>
+
+<section *ngIf="gameState === GameState.NotStarted">
+<div class="game-container uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-height-viewport">
+    <img src="/assets/mysteries-of-baker-street-logo.jpeg" alt="Mysteries of Baker Street" class="game-logo">
+     <div class="uk-text-center game-header uk-width-1-1">
+        <h1 class="game-title">Mysteries of Baker Street</h1>
+    </div>
+   <div class="uk-text-center game-footer uk-width-1-1">
+        <button class="uk-button uk-button-primary game-button" (click)="startGame()" >START GAME</button>
+        <p class="game-subtitle">designed by L.F.Martins</p>
+    </div>
+</div>
 </section>

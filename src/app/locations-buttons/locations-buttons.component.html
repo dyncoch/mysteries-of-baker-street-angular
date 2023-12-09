@@ -1,5 +1,5 @@
-<div class="locations">
-    <div *ngFor="let location of locations">
-        <button (click)="onLocationClick(location)" class="location-button">{{ location }}</button>
+<div class="locations" uk-grid>
+    <div *ngFor="let location of locations" class="">
+        <button (click)="onLocationClick(location)" class="location-button uk-button uk-button-primary">{{ location }}</button>
     </div>
 </div>

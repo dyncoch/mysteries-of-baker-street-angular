@@ -41,6 +41,11 @@
              "scripts": [
                "./node_modules/uikit/dist/js/uikit.min.js",
                "./node_modules/uikit/dist/js/uikit-icons.min.js"
+             ],
+             "allowedCommonJsDependencies": [
+               "uikit",
+               "uikit/dist/js/uikit.min.js",
+               "uikit/dist/js/uikit-icons.min.js"
              ]
           },
           "configurations": {
