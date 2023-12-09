@@ -4,26 +4,19 @@
     align-items: center;
     justify-content: center;
     position: relative; // Added to allow absolute positioning inside
-    height: 100%; // Full viewport height
+    // height: 100%; // Full viewport height
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: -webkit-fill-available;
+    width: 100vw;
+    width: calc(var(--vw, 1vw) * 100) !important;
+    min-width: -webkit-fill-available;
+    margin-bottom: 0;
 
-    // &:hover {
-    //   .game-footer, .game-header {
-    //     background: rgba(43, 68, 74, 0.8);
-    //     padding-top: 3rem;
-    //   }
-    //
-    //   .game-header {
-    //     padding-bottom: 4rem;
-    //   }
-    //
-    //   .game-button {
-    //      margin-bottom: 4rem;
-    //   }
-    // }
 
     .game-logo {
         width: 100%; // Full width of the container
         height: 100vh;
+        height: calc(var(--vh, 1vh) * 100) !important;
         position: absolute;
         top: 0;
         left: 0;
@@ -38,15 +31,10 @@
       color: white; // Text color
       text-align: center;
       padding: 0rem;
-      transition: background-color 0.8s ease-in, padding 0.5s ease-in;
 
       .game-title {
           color: white;
-          // background-color: rgba(0,0,0,0.5);
-          // padding: 0.5rem;
-          // border-radius: 0.5rem;
       }
-
     }
 
     .game-footer {
@@ -56,24 +44,36 @@
         background: rgba(0,0,0, 0.7); // Semi-transparent background
         color: white; // Text color
         text-align: center;
-        transition: background-color 0.8s ease-in, padding 0.5s ease-in;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        margin-bottom: 0;
 
-        .game-button {
-            // Your button styles here
-            margin-top: 1rem;
-            transition: margin 0.5s ease-in;
-        }
-
-        .game-subtitle {
-
+        p {
+          margin-bottom: 0;
         }
     }
 }
 
+
 .card-case {
   background-color: transparent;
   border: none;
-  box-shadow: none;
+  box-shadow: none; /* Normal state shadow */
   padding: 0;
   text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease; /* Smooth transition for the shadow effect */
+
+  &:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    top: 2px; /* Optional: gives the effect of the button being pushed down */
+  }
+
+  .case-name {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }
 }
+

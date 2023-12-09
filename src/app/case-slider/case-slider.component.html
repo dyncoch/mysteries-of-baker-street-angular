@@ -3,29 +3,18 @@
 <div class="game-container uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-height-viewport">
     <img src="/assets/case-card-full.jpeg" alt="Mysteries of Baker Street" class="game-logo">
 
-<div class="uk-position-relative uk-visible-toggle uk-dark" tabindex="-1" uk-slider="center: true">
-
-    <ul class="uk-slider-items uk-grid">
-        <li class="uk-width-3-4" *ngFor="let case of cases">
-            <div class="uk-card uk-card-default card-case">
-                    <div class="uk-card-body">
-                      <div class="uk-card-title"><h1>{{ case.name }}</h1></div>
-
-                        <!-- <h3 class="uk-card-title">Headline</h3> -->
-                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p> -->
-                    </div>
+      <div class="uk-position-relative uk-visible-toggle uk-dark" tabindex="0" uk-slider="center: true">
+        <ul class="uk-slider-items uk-grid">
+            <li class="uk-width-3-4" *ngFor="let case of cases">
+                <div class="uk-card uk-card-default card-case">
+                  <div class="uk-card-body">
+                    <div class="uk-card-title case-name" (click)="onCaseClick(case.id)" ><h1>{{ case.name }}</h1></div>
+                  </div>
                 </div>
-            <!-- <div class="uk-panel"> -->
-              <!-- <img src="/assets/case-card.png" alt="{{ case.name }}"> -->
-                            <!-- </div> -->
-        </li>
-    </ul>
-
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slider-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slider-item="next"></a>
-
-    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-</div>
+            </li>
+        </ul>
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+      </div>
 
      <div class="uk-text-center game-header uk-width-1-1">
         <h1 class="game-title">Mysteries of Baker Street</h1>

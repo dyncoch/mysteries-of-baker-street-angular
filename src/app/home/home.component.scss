@@ -5,7 +5,9 @@
     align-items: center;
     justify-content: center;
     position: relative; // Added to allow absolute positioning inside
-    height: 100%; // Full viewport height
+    height: 100vh; // Full viewport height
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: -webkit-fill-available;
 
     &:hover {
       .game-footer, .game-header {
@@ -25,6 +27,7 @@
     .game-logo {
         width: 100%; // Full width of the container
         height: 100vh;
+        height: calc(var(--vh, 1vh) * 100) !important;
         position: absolute;
         top: 0;
         left: 0;

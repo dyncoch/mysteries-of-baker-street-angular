@@ -33,5 +33,5 @@
 </section>
 
 <section *ngIf="gameState === GameState.ChooseCase">
-  <app-case-slider [cases]="cases"></app-case-slider>
+  <app-case-slider [cases]="cases" (caseSelected)="onCaseSelect($event)"></app-case-slider>
 </section>

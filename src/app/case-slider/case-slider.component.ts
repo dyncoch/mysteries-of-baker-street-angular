@@ -11,4 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 export class CaseSliderComponent {
   @Input() cases!: Case[];
+
+  @Output() caseSelected = new EventEmitter<string>();
+
+  onCaseClick(caseId: string) {
+    this.caseSelected.emit(caseId);
+  }
 }

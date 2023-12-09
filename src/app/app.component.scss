@@ -1,18 +1,43 @@
-:host {
-    --content-padding: 10px;
-}
+// :host {
+//     --content-padding: 10px;
+// }
 
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
+    width: 100vw;
+    min-height: -webkit-fill-available;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-/* Set the background color for the entire page */
 body {
-    background-color: #1c2d31; /* Your specified green color */
-   color: #d7d7d7 !important;
+  width: 100vw;
+  min-height: 100vh; /* Fallback for browsers that do not support custom properties */
+  height: calc(var(--vh, 1vh) * 100) !important;
+  background-color: #1c2d31;
+  color: #d7d7d7;
+  min-height: -webkit-fill-available;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; // Added to allow absolute positioning inside
+    height: 100vh; // Full viewport height
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: -webkit-fill-available;
+    width: 100vw;
+    width: calc(var(--vw, 1vw) * 100) !important;
+    min-width: -webkit-fill-available;
+}
+
 
 .footer-text {
 

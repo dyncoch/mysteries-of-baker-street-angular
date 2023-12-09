@@ -1,12 +1,51 @@
-<section>
-    <div class="page">
-        <h1>{{ case.name }}</h1>
-        <p>{{ case.description }}</p>
-        <ul class="objectives">
-            <li *ngFor="let objective of case?.objectives">
-                {{ objective }}
-            </li>
-        </ul>
+<!-- <section> -->
+<!--     <div class="page"> -->
+<!--         <h1>{{ case.name }}</h1> -->
+<!--         <p>{{ case.description }}</p> -->
+<!--         <ul class="objectives"> -->
+<!--             <li *ngFor="let objective of case?.objectives"> -->
+<!--                 {{ objective }} -->
+<!--             </li> -->
+<!--         </ul> -->
+<!--     </div> -->
+<!-- </section> -->
+<div class="game-container uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-height-viewport">
+  <div>
+    <div class="case-description uk-card uk-card-large uk-card-default">
+      <h1>{{ case.name }}</h1>
+      <p>{{ case.description }}</p>
+      <ul class="objectives">
+        <li *ngFor="let objective of case?.objectives">
+          {{ objective }}
+        </li>
+      </ul>
     </div>
-</section>
+    </div>
 
+
+    <div class="uk-child-width-1-2@s" uk-grid>
+    <div>
+        <div class="uk-card uk-card-default uk-card-small uk-card-body">
+            <h3 class="uk-card-title">Small</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-large uk-card-body">
+            <h3 class="uk-card-title">Large</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!-- <img src="/assets/old-paper.png" alt="Mysteries of Baker Street" class="game-logo"> -->
+     <div class="uk-text-center game-header uk-width-1-1">
+        <h1 class="game-title">Mysteries of Baker Street</h1>
+    </div>
+   <div class="uk-text-center game-footer uk-width-1-1">
+        <p class="game-subtitle">designed by L.F.Martins</p>
+    </div>
+</div>

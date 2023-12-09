@@ -58,6 +58,12 @@ export class HomeComponent {
 
   }
 
+  onCaseSelect(caseId: string) {
+    console.log('case clicked: ' + caseId);
+    this.currentCase = this.cases.find(c => c.id === caseId)!;
+    this.gameState = GameState.ShowCase;
+  }
+
   onBack() {
     this.gameState = GameState.ShowCase;
   }
