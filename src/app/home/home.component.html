@@ -31,3 +31,7 @@
     </div>
 </div>
 </section>
+
+<section *ngIf="gameState === GameState.ChooseCase">
+  <app-case-slider [cases]="cases"></app-case-slider>
+</section>
