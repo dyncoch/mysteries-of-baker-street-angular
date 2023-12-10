@@ -3,29 +3,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Square, SquareType, Board, getSquareType } from '../models/board.model';
 import { CommonModule } from '@angular/common';
 import { Player } from '../models/player.model';
-
-const mapLayout = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 2, 2, 2, 1, 2, 2, 0, 2, 1, 2, 2, 0, 2, 2, 2, 1, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 2, 1, 2, 2, 0, 2, 2, 2, 1, 2, 2, 0, 2, 1, 2, 2, 0, 0, 0],
-  [0, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 1, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 2, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 2, 2, 2, 1, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 1, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 2, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 2, 2, 2, 1, 2, 2, 0, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 0, 0]
-];
+import { GameLocation, getLocationFromKey, locationShapes, locationDoors } from '../models/location.model';
 
 interface QueueItem {
   x: number;
@@ -56,22 +34,45 @@ export class BoardComponent implements OnInit {
   }
 
   initializeBoard() {
-    this.board = mapLayout.map((row, i) =>
-      row.map((squareNumber, j) => {
-        return {
-          type: getSquareType(squareNumber),
+    // Set streets
+    for (let i = 0; i <= 19; i++) {
+      this.board[i] = [];
+      for (let j = 0; j <= 19; j++) {
+        this.board[i][j] = {
+          type: SquareType.Street,
           // Add more properties here, like coordinates
-          coordinates: { x: i, y: j }
+          location: {} as GameLocation
         };
-      })
-    );
+      }
+    }
+    // Set the building squares on the board
+    Object.entries(locationShapes).forEach(([locationKey, shape]) => {
+      const location = getLocationFromKey(locationKey) as GameLocation;
+      if (location !== undefined) {
+        shape.forEach(coords => {
+          this.board[coords.x][coords.y].type = SquareType.Building;
+          this.board[coords.x][coords.y].location = location;
+        });
+      }
+    });
+
+    // Set the door squares on the board
+    Object.entries(locationDoors).forEach(([locationKey, shape]) => {
+      const location = getLocationFromKey(locationKey) as GameLocation;
+      if (location !== undefined) {
+        shape.forEach(coords => {
+          this.board[coords.x][coords.y].type = SquareType.Door;
+          this.board[coords.x][coords.y].location = location;
+        });
+      }
+    });
   }
 
   initializePlayer() {
     this.player = {
       id: '1',
       name: 'Sherlock Holmes',
-      position: { x: 0, y: 0 },
+      position: { x: 1, y: 1 },
       avatar: '/assets/sherlock.jpeg'
     }
   }

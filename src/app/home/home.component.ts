@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CaseViewComponent } from '../case-view/case-view.component';
 import { CommonModule } from '@angular/common';
 import { Case } from '../models/case.model';
-import { Location } from '../models/location.model';
+import { GameLocation } from '../models/location.model';
 import { LocationsButtonsComponent } from '../locations-buttons/locations-buttons.component';
-import { getLocationEnumValue } from '../models/location.model';
+import { getLocationFromKey } from '../models/location.model';
 import { HintViewComponent } from '../hint-view/hint-view.component';
 import { CaseSliderComponent } from '../case-slider/case-slider.component';
 import { BoardComponent } from '../board/board.component';
@@ -39,8 +39,8 @@ export class HomeComponent {
   // gameState: GameState = GameState.NotStarted;
   gameState: GameState = GameState.ShowBoard;
   currentCase!: Case;
-  selectedLocation?: Location;
-  visitedLocations: Location[] = [];
+  selectedLocation?: GameLocation;
+  visitedLocations: GameLocation[] = [];
 
 
   startGame() {
@@ -48,11 +48,11 @@ export class HomeComponent {
     this.currentCase = this.case;
   }
 
-  locationValues = Object.values(Location).filter(location => typeof location === 'string') as string[];
+  locationValues = Object.values(GameLocation).filter(location => typeof location === 'string') as string[];
 
   onLocationSelect(locationString: string) {
     console.log('location clicked: ' + locationString);
-    let location = getLocationEnumValue(locationString);
+    let location = getLocationFromKey(locationString);
 
     this.selectedLocation = location;
     this.visitedLocations.push(location!);
@@ -86,20 +86,20 @@ export class HomeComponent {
           'Recover the recipe'
         ],
         hints: {
-          [Location.Bank]: 'The thief is not in the bank',
-          [Location.Bar]: 'The thief is not in the bar',
-          [Location.Chemist]: 'The thief is not in the chemist',
-          [Location.CarriageDepot]: 'The thief is not in the carriage depot',
-          [Location.Docks]: 'The thief is not in the docks',
-          [Location.Hotel]: 'The thief is not in the hotel',
-          [Location.Locksmith]: 'The thief is not in the locksmith',
-          [Location.Museum]: 'The thief is not in the museum',
-          [Location.Newsagents]: 'The thief is not in the newsagents',
-          [Location.Park]: 'The thief is not in the park',
-          [Location.Pawnbroker]: 'The thief is not in the pawnbroker',
-          [Location.Theatre]: 'The thief is not in the theatre',
-          [Location.ScotlandYard]: 'The thief is not in Scotland Yard',
-          [Location.Tobacconist]: 'The thief is not in the tobacconist'
+          [GameLocation.Bank]: 'The thief is not in the bank',
+          [GameLocation.Bar]: 'The thief is not in the bar',
+          [GameLocation.Chemist]: 'The thief is not in the chemist',
+          [GameLocation.CarriageDepot]: 'The thief is not in the carriage depot',
+          [GameLocation.Docks]: 'The thief is not in the docks',
+          [GameLocation.Hotel]: 'The thief is not in the hotel',
+          [GameLocation.Locksmith]: 'The thief is not in the locksmith',
+          [GameLocation.Museum]: 'The thief is not in the museum',
+          [GameLocation.Newsagents]: 'The thief is not in the newsagents',
+          [GameLocation.Park]: 'The thief is not in the park',
+          [GameLocation.Pawnbroker]: 'The thief is not in the pawnbroker',
+          [GameLocation.Theatre]: 'The thief is not in the theatre',
+          [GameLocation.ScotlandYard]: 'The thief is not in Scotland Yard',
+          [GameLocation.Tobacconist]: 'The thief is not in the tobacconist'
         },
         solution: 'The thief is in the tobacconist'
       },
@@ -112,20 +112,20 @@ export class HomeComponent {
           'Recover the recipe'
         ],
         hints: {
-          [Location.Bank]: 'The thief is not in the bank',
-          [Location.Bar]: 'The thief is not in the bar',
-          [Location.Chemist]: 'The thief is not in the chemist',
-          [Location.CarriageDepot]: 'The thief is not in the carriage depot',
-          [Location.Docks]: 'The thief is not in the docks',
-          [Location.Hotel]: 'The thief is not in the hotel',
-          [Location.Locksmith]: 'The thief is not in the locksmith',
-          [Location.Museum]: 'The thief is not in the museum',
-          [Location.Newsagents]: 'The thief is not in the newsagents',
-          [Location.Park]: 'The thief is not in the park',
-          [Location.Pawnbroker]: 'The thief is not in the pawnbroker',
-          [Location.Theatre]: 'The thief is not in the theatre',
-          [Location.ScotlandYard]: 'The thief is not in Scotland Yard',
-          [Location.Tobacconist]: 'The thief is not in the tobacconist'
+          [GameLocation.Bank]: 'The thief is not in the bank',
+          [GameLocation.Bar]: 'The thief is not in the bar',
+          [GameLocation.Chemist]: 'The thief is not in the chemist',
+          [GameLocation.CarriageDepot]: 'The thief is not in the carriage depot',
+          [GameLocation.Docks]: 'The thief is not in the docks',
+          [GameLocation.Hotel]: 'The thief is not in the hotel',
+          [GameLocation.Locksmith]: 'The thief is not in the locksmith',
+          [GameLocation.Museum]: 'The thief is not in the museum',
+          [GameLocation.Newsagents]: 'The thief is not in the newsagents',
+          [GameLocation.Park]: 'The thief is not in the park',
+          [GameLocation.Pawnbroker]: 'The thief is not in the pawnbroker',
+          [GameLocation.Theatre]: 'The thief is not in the theatre',
+          [GameLocation.ScotlandYard]: 'The thief is not in Scotland Yard',
+          [GameLocation.Tobacconist]: 'The thief is not in the tobacconist'
         },
         solution: 'The thief is in the tobacconist'
       },
@@ -138,20 +138,20 @@ export class HomeComponent {
           'Recover the recipe'
         ],
         hints: {
-          [Location.Bank]: 'The thief is not in the bank',
-          [Location.Bar]: 'The thief is not in the bar',
-          [Location.Chemist]: 'The thief is not in the chemist',
-          [Location.CarriageDepot]: 'The thief is not in the carriage depot',
-          [Location.Docks]: 'The thief is not in the docks',
-          [Location.Hotel]: 'The thief is not in the hotel',
-          [Location.Locksmith]: 'The thief is not in the locksmith',
-          [Location.Museum]: 'The thief is not in the museum',
-          [Location.Newsagents]: 'The thief is not in the newsagents',
-          [Location.Park]: 'The thief is not in the park',
-          [Location.Pawnbroker]: 'The thief is not in the pawnbroker',
-          [Location.Theatre]: 'The thief is not in the theatre',
-          [Location.ScotlandYard]: 'The thief is not in Scotland Yard',
-          [Location.Tobacconist]: 'The thief is not in the tobacconist'
+          [GameLocation.Bank]: 'The thief is not in the bank',
+          [GameLocation.Bar]: 'The thief is not in the bar',
+          [GameLocation.Chemist]: 'The thief is not in the chemist',
+          [GameLocation.CarriageDepot]: 'The thief is not in the carriage depot',
+          [GameLocation.Docks]: 'The thief is not in the docks',
+          [GameLocation.Hotel]: 'The thief is not in the hotel',
+          [GameLocation.Locksmith]: 'The thief is not in the locksmith',
+          [GameLocation.Museum]: 'The thief is not in the museum',
+          [GameLocation.Newsagents]: 'The thief is not in the newsagents',
+          [GameLocation.Park]: 'The thief is not in the park',
+          [GameLocation.Pawnbroker]: 'The thief is not in the pawnbroker',
+          [GameLocation.Theatre]: 'The thief is not in the theatre',
+          [GameLocation.ScotlandYard]: 'The thief is not in Scotland Yard',
+          [GameLocation.Tobacconist]: 'The thief is not in the tobacconist'
         },
         solution: 'The thief is in the tobacconist'
       },
@@ -167,20 +167,20 @@ export class HomeComponent {
       'Recover the recipe'
     ],
     hints: {
-      [Location.Bank]: 'The thief is not in the bank',
-      [Location.Bar]: 'The thief is not in the bar',
-      [Location.Chemist]: 'The thief is not in the chemist',
-      [Location.CarriageDepot]: 'The thief is not in the carriage depot',
-      [Location.Docks]: 'The thief is not in the docks',
-      [Location.Hotel]: 'The thief is not in the hotel',
-      [Location.Locksmith]: 'The thief is not in the locksmith',
-      [Location.Museum]: 'The thief is not in the museum',
-      [Location.Newsagents]: 'The thief is not in the newsagents',
-      [Location.Park]: 'The thief is not in the park',
-      [Location.Pawnbroker]: 'The thief is not in the pawnbroker',
-      [Location.Theatre]: 'The thief is not in the theatre',
-      [Location.ScotlandYard]: 'The thief is not in Scotland Yard',
-      [Location.Tobacconist]: 'The thief is not in the tobacconist'
+      [GameLocation.Bank]: 'The thief is not in the bank',
+      [GameLocation.Bar]: 'The thief is not in the bar',
+      [GameLocation.Chemist]: 'The thief is not in the chemist',
+      [GameLocation.CarriageDepot]: 'The thief is not in the carriage depot',
+      [GameLocation.Docks]: 'The thief is not in the docks',
+      [GameLocation.Hotel]: 'The thief is not in the hotel',
+      [GameLocation.Locksmith]: 'The thief is not in the locksmith',
+      [GameLocation.Museum]: 'The thief is not in the museum',
+      [GameLocation.Newsagents]: 'The thief is not in the newsagents',
+      [GameLocation.Park]: 'The thief is not in the park',
+      [GameLocation.Pawnbroker]: 'The thief is not in the pawnbroker',
+      [GameLocation.Theatre]: 'The thief is not in the theatre',
+      [GameLocation.ScotlandYard]: 'The thief is not in Scotland Yard',
+      [GameLocation.Tobacconist]: 'The thief is not in the tobacconist'
     },
     solution: 'The thief is in the tobacconist'
   }

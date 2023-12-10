@@ -1,3 +1,5 @@
+import { GameLocation } from "./location.model";
+
 // board.model.ts
 export enum SquareType {
   Street = 'street',
@@ -7,6 +9,7 @@ export enum SquareType {
 
 export interface Square {
   type: SquareType;
+  location?: GameLocation;
   // Add more properties as needed, like coordinates, id, etc.
 }
 

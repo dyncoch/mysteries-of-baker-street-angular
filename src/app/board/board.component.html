@@ -3,6 +3,13 @@
     <td *ngFor="let square of row; let j = index" [ngClass]="getSquareClasses(i, j)" (click)="movePlayerToSquare(i, j)">
       <span uk-icon="user" *ngIf="player.position.x === i && player.position.y === j" class="player"
         (click)="onPlayerClick()"></span>
+      {{ i }}, {{ j }}
     </td>
   </tr>
 </table>
+
+<!-- <td *ngFor="let square of row; let j = index" 
+    [ngClass]="{'building': square.type === SquareType.Building}"
+    (click)="movePlayerToSquare(i, j)">
+  <span *ngIf="square.location">{{ square.location }}</span>
+</td> -->

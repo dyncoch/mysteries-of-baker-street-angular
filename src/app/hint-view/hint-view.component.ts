@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Location } from '../models/location.model';
+import { GameLocation } from '../models/location.model';
 import { Case } from '../models/case.model';
 
 @Component({
@@ -11,7 +11,7 @@ import { Case } from '../models/case.model';
 })
 export class HintViewComponent {
   @Input() case!: Case;
-  @Input() selectedLocation!: Location;
+  @Input() selectedLocation!: GameLocation;
 
   @Output() onBack = new EventEmitter<void>();
 
@@ -21,14 +21,14 @@ export class HintViewComponent {
   // Use ngOnChanges to update the hint when inputs change
   ngOnChanges(): void {
     this.hint = this.getHint(this.case, this.selectedLocation);
-    this.location = Location[Object.keys(Location).indexOf(this.selectedLocation.toString())];
+    this.location = GameLocation[Object.keys(GameLocation).indexOf(this.selectedLocation.toString())];
   }
 
   onBackClick() {
     this.onBack.emit();
   }
 
-  private getHint(currentCase: Case, currentLocation: Location): string {
+  private getHint(currentCase: Case, currentLocation: GameLocation): string {
     const hint = currentCase.hints[currentLocation];
     return hint ? hint.toString() : 'No hint available for this location';
   }
