@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CaseViewComponent } from '../case-view/case-view.component';
 import { CommonModule } from '@angular/common';
-import { Case } from '../case';
-import { Location } from '../location';
+import { Case } from '../models/case.model';
+import { Location } from '../models/location.model';
 import { LocationsButtonsComponent } from '../locations-buttons/locations-buttons.component';
-import { getLocationEnumValue } from '../location';
+import { getLocationEnumValue } from '../models/location.model';
 import { HintViewComponent } from '../hint-view/hint-view.component';
 import { CaseSliderComponent } from '../case-slider/case-slider.component';
 import { BoardComponent } from '../board/board.component';

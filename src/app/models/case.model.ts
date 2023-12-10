@@ -1,4 +1,4 @@
-import { Location } from './location'; // Import Location enum
+import { Location } from './location.model'; // Import Location enum
 
 export interface Case {
     id: string;

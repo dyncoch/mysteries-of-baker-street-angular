@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Location } from '../location';
-import { Case } from '../case';
+import { Location } from '../models/location.model';
+import { Case } from '../models/case.model';
 
 @Component({
   selector: 'app-hint-view',

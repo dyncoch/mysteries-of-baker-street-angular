@@ -1,1 +1,7 @@
-<p>board works!</p>
+<table class="board">
+  <tr *ngFor="let row of board; let i = index">
+    <td *ngFor="let square of row; let j = index" [ngClass]="square.type">
+      <span uk-icon="user" *ngIf="player.position.x === i && player.position.y === j" class="player"></span>
+    </td>
+  </tr>
+</table>

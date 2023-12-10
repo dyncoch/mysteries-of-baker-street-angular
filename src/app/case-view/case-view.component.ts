@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Case } from '../case';
+import { Case } from '../models/case.model';
 import { CommonModule } from '@angular/common';
 
 
@@ -19,8 +19,8 @@ export class CaseViewComponent {
   // @Input() locations!: string[];
 
   // locationValues = Object.values(Location).map(location => location.toString());
-   ngOnChanges(): void {
-     console.log('case-view ngOnChanges');
-   }
+  ngOnChanges(): void {
+    console.log('case-view ngOnChanges');
+  }
 
 }
