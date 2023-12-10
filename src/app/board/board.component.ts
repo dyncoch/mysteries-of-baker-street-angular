@@ -41,7 +41,7 @@ export class BoardComponent implements OnInit {
         this.board[i][j] = {
           type: SquareType.Street,
           // Add more properties here, like coordinates
-          location: {} as GameLocation
+          location: undefined
         };
       }
     }
@@ -170,10 +170,12 @@ export class BoardComponent implements OnInit {
   getSquareClasses(x: number, y: number): any {
     const isHighlighted = this.isHighlighted(x, y);
     const isPlayerPosition = this.isPlayerPosition(x, y);
+    const location: string = this.board[x][y].location?.toString() || '';
     return {
       [this.board[x][y].type]: true, // Dynamically add the type-based class
       'highlight': isHighlighted,
       'player': isPlayerPosition,
+      [location]: true,
     };
   }
 

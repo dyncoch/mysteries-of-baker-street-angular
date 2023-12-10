@@ -3,7 +3,8 @@
     <td *ngFor="let square of row; let j = index" [ngClass]="getSquareClasses(i, j)" (click)="movePlayerToSquare(i, j)">
       <span uk-icon="user" *ngIf="player.position.x === i && player.position.y === j" class="player"
         (click)="onPlayerClick()"></span>
-      {{ i }}, {{ j }}
+      <!-- {{ i }}, {{ j }} -->
+      {{ square.location }}
     </td>
   </tr>
 </table>
