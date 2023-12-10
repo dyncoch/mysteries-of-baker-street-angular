@@ -7,10 +7,12 @@ import { LocationsButtonsComponent } from '../locations-buttons/locations-button
 import { getLocationEnumValue } from '../location';
 import { HintViewComponent } from '../hint-view/hint-view.component';
 import { CaseSliderComponent } from '../case-slider/case-slider.component';
+import { BoardComponent } from '../board/board.component';
 
 enum GameState {
   NotStarted,
   ChooseCase,
+  ShowBoard,
   ShowCase,
   ShowHints,
   Solved
@@ -25,6 +27,7 @@ enum GameState {
     LocationsButtonsComponent,
     HintViewComponent,
     CaseSliderComponent,
+    BoardComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -33,7 +36,8 @@ export class HomeComponent {
 
   GameState = GameState;
 
-  gameState: GameState = GameState.NotStarted;
+  // gameState: GameState = GameState.NotStarted;
+  gameState: GameState = GameState.ShowBoard;
   currentCase!: Case;
   selectedLocation?: Location;
   visitedLocations: Location[] = [];

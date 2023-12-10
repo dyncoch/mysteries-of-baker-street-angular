@@ -8,7 +8,6 @@
 <!-- </section> -->
 
 
-
 <section *ngIf="gameState === GameState.ShowCase">
      <app-case-view [case]="currentCase"></app-case-view>
 </section>
@@ -17,6 +16,9 @@
 </section>
 <section *ngIf="gameState === GameState.ShowCase || gameState == GameState.ShowHints">
      <app-locations-buttons [locations]="locationValues" (locationSelected)="onLocationSelect($event)"></app-locations-buttons>
+</section>
+<section *ngIf="gameState === GameState.ShowBoard">
+  <app-board></app-board>
 </section>
 
 <section *ngIf="gameState === GameState.NotStarted">
