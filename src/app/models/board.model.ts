@@ -12,3 +12,15 @@ export interface Square {
 
 export type Board = Square[][];
 
+export function getSquareType(number: number): SquareType {
+  switch (number) {
+    case 0:
+      return SquareType.Street;
+    case 1:
+      return SquareType.Door;
+    case 2:
+      return SquareType.Building;
+    default:
+      return SquareType.Street;
+  }
+}
