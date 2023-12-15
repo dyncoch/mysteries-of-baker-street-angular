@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Square, SquareType, Board, getSquareType } from '../models/board.model';
 import { CommonModule } from '@angular/common';
@@ -26,11 +26,25 @@ export class BoardComponent implements OnInit {
   board: Board = [];
   player!: Player;
   highlightedSquares: { x: number, y: number }[] = [];
+  squareSize: number = this.calculateSquareSize();
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.squareSize = this.calculateSquareSize();
+  }
 
   ngOnInit() {
     this.initializeBoard();
     this.initializePlayer();
+  }
+
+  calculateSquareSize(): number {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    let screenWidth = window.innerWidth - scrollbarWidth;
+    if (screenWidth < 400) { // for mobile
+      return screenWidth / 10;
+    }
+    return screenWidth / 20;
   }
 
   initializeBoard() {
@@ -167,15 +181,36 @@ export class BoardComponent implements OnInit {
     return this.player.position.x === x && this.player.position.y === y;
   }
 
+  calculateBackgroundPosition(x: number, y: number): string {
+    // Example calculation, adjust based on your image and layout
+    const xOffset = -this.squareSize * x;
+    const yOffset = -this.squareSize * y;
+    return xOffset + 'px ' + yOffset + 'px';
+  }
+
+  getLocationBackgroundSize(location?: GameLocation): string {
+    if (!location) {
+      return '';
+    }
+    const locationShape = locationShapes[location];
+    // const locationWidth = Math.max(...locationShape.map(coords => coords.y)) - Math.min(...locationShape.map(coords => coords.y)) + 1;
+    // const locationHeight = Math.max(...locationShape.map(coords => coords.x)) - Math.min(...locationShape.map(coords => coords.x)) + 1;
+    const locationWidth = 3;
+    const locationHeight = 3;
+    return (locationWidth * this.squareSize) + 'px ' + (locationHeight * this.squareSize) + 'px';
+  }
+
   getSquareClasses(x: number, y: number): any {
     const isHighlighted = this.isHighlighted(x, y);
     const isPlayerPosition = this.isPlayerPosition(x, y);
     const location: string = this.board[x][y].location?.toString() || '';
+    const relativeLocation: string = location + '-' + x.toString() + '-' + y.toString() || '';
     return {
       [this.board[x][y].type]: true, // Dynamically add the type-based class
       'highlight': isHighlighted,
       'player': isPlayerPosition,
       [location]: true,
+      [relativeLocation]: true,
     };
   }
 

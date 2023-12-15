@@ -1,16 +1,16 @@
 <table class="board">
   <tr *ngFor="let row of board; let i = index">
-    <td *ngFor="let square of row; let j = index" [ngClass]="getSquareClasses(i, j)" (click)="movePlayerToSquare(i, j)">
+    <td *ngFor="let square of row; let j = index" [ngClass]="getSquareClasses(i, j)" (click)="movePlayerToSquare(i, j)"
+      [ngStyle]="{
+        'width.px': squareSize, 
+        'height.px': squareSize,
+        'background-size': getLocationBackgroundSize(square.location),
+        'background-position': calculateBackgroundPosition(j, i),
+      }">
       <span uk-icon="user" *ngIf="player.position.x === i && player.position.y === j" class="player"
         (click)="onPlayerClick()"></span>
       <!-- {{ i }}, {{ j }} -->
-      {{ square.location }}
+      <!-- {{ square.location }} -->
     </td>
   </tr>
 </table>
-
-<!-- <td *ngFor="let square of row; let j = index" 
-    [ngClass]="{'building': square.type === SquareType.Building}"
-    (click)="movePlayerToSquare(i, j)">
-  <span *ngIf="square.location">{{ square.location }}</span>
-</td> -->

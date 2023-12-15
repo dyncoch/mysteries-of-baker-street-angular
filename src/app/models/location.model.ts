@@ -25,7 +25,7 @@ export type Coordinates = { x: number, y: number };
 type LocationShape = Coordinates[];
 
 const bankShape: LocationShape = makeLocation(15, 17, 12, 15);
-const barShape: LocationShape = makeLocation(14, 15, 8, 10);
+const barShape: LocationShape = makeLocation(14, 16, 8, 10);
 const chemistShape: LocationShape = makeLocation(5, 7, 1, 4);
 const carriageDepotShape: LocationShape = makeLocation(12, 15, 18, 19);
 const hotelShape: LocationShape = makeLocation(7, 9, 13, 16);
@@ -34,7 +34,7 @@ const locksmithShape: LocationShape = makeLocation(9, 10, 0, 1);
 const museumShape: LocationShape = makeLocation(1, 3, 6, 10);
 const newsagentsShape: LocationShape = makeLocation(11, 13, 0, 1);
 const parkShape: LocationShape = makeLocation(6, 11, 7, 10);
-const pawnbrokerShape: LocationShape = makeLocation(3, 4, 12, 14);
+const pawnbrokerShape: LocationShape = makeLocation(3, 5, 12, 14);
 const theatreShape: LocationShape = makeLocation(10, 13, 13, 15);
 const scotlandYardShape: LocationShape = makeLocation(0, 1, 14, 19);
 const tobacconistShape: LocationShape = makeLocation(3, 4, 18, 19);
